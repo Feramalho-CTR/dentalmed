@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 220" width="240" height="220">
+  <!-- linha de base (a divisão da página) = y 110, exatamente no centro vertical -->
+  <g fill="none" stroke="#EE0000" stroke-width="7.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M101 32 C70 16 28 26 28 70 C28 98 44 114 62 132 L120 190 L178 132 C196 114 212 98 212 70 C212 26 170 16 139 32"/>
+    <path d="M0 110 L68 110 L82 80 L100 142 L120 64 L134 110 L240 110" stroke-linecap="butt"/>
+  </g>
+  <rect x="96" y="22" width="7" height="20" rx="3.5" fill="#3AB0FF"/>
+  <rect x="137" y="22" width="7" height="20" rx="3.5" fill="#3AB0FF"/>
+</svg>

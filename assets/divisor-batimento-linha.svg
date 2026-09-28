@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 220" width="360" height="220">
+  <!-- 1 batimento por bloco; começa e termina em y 110 para emendar sem falha ao repetir -->
+  <path d="M0 110 L110 110 L122 90 L138 134 L154 70 L166 110 L360 110" fill="none" stroke="#EE0000" stroke-width="7.5" stroke-linejoin="round"/>
+</svg>
