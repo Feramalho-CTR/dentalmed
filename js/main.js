@@ -5,13 +5,19 @@
   var anoEl = document.getElementById("ano");
   if (anoEl) anoEl.textContent = new Date().getFullYear();
 
-  // Logo do header: clique recarrega a página do zero, voltando ao início
-  // (em vez de só rolar até #topo).
+  // Logo do header: rola suavemente até o topo, como qualquer outro link
+  // âncora da página (antes forçava um reload completo).
   var brandLink = document.getElementById("brandLink");
   if (brandLink) {
     brandLink.addEventListener("click", function (e) {
       e.preventDefault();
-      window.location.href = window.location.pathname + window.location.search;
+      // #topo é o próprio header (position: sticky) — scrollIntoView nele
+      // não faz nada, pois ele já fica "visível" colado no topo. Rolar a
+      // janela até o início do documento é o que de fato volta ao topo.
+      window.scrollTo({
+        top: 0,
+        behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"
+      });
     });
   }
 
