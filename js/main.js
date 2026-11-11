@@ -42,16 +42,23 @@
   }
 
   // Medição de CTAs do WhatsApp — cada botão/link com data-cta dispara
-  // um evento (pronto para GA4/Google Ads assim que o cliente passar o ID).
+  // eventos no Meta Pixel e no Google Ads.
   document.querySelectorAll("[data-cta]").forEach(function (el) {
     el.addEventListener("click", function () {
       var nomeCta = el.getAttribute("data-cta");
 
-      // TROCAR: descomente e informe o ID de conversão do GA4/Google Ads
-      // quando o cliente enviar. Não dispara nada enquanto estiver comentado.
-      // if (window.gtag) {
-      //   gtag("event", "whatsapp_click", { cta_section: nomeCta });
-      // }
+      // Meta Pixel: evento padrão de contato
+      if (window.fbq) {
+        fbq("track", "Contact", { content_name: nomeCta });
+      }
+
+      // Google Ads: evento de geração de lead / clique no WhatsApp
+      if (window.gtag) {
+        gtag("event", "generate_lead", {
+          cta_section: nomeCta,
+          send_to: "AW-18071614160"
+        });
+      }
 
       if (window.console && console.info) {
         console.info("[DentalMed] CTA clicado:", nomeCta);
