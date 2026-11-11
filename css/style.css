@@ -576,7 +576,7 @@ a{ color: var(--azul-escuro); }
 /* Modal com a responsável técnica da clínica (bio e demais profissionais
    entram quando a cliente confirmar — ver index.html) */
 .clinica-modal{
-  width: min(90vw, 480px);
+  width: min(90vw, 540px);
   max-height: 85vh;
   margin: auto;
   padding: 0;
@@ -642,6 +642,75 @@ a{ color: var(--azul-escuro); }
   .clinica-modal-fechar:hover{ background: var(--azul-claro-banda); }
 }
 .clinica-modal-fechar:active{ transform: scale(0.94); }
+
+/* Lista da Equipe dentro do Modal */
+.equipe-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+}
+.equipe-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 16px;
+  background: var(--azul-claro);
+  border-radius: var(--radius-btn-sec);
+  border: 1px solid rgba(58, 176, 255, 0.18);
+  transition: transform 160ms var(--ease-out), border-color 160ms var(--ease-out);
+}
+.equipe-card--destaque {
+  background: var(--azul-claro-banda);
+  border-color: rgba(58, 176, 255, 0.4);
+}
+.equipe-foto-wrap {
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--white);
+  border: 2px solid var(--azul-marca);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.equipe-foto-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.equipe-foto-placeholder {
+  color: var(--azul-marca);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.equipe-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+.equipe-nome {
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: var(--azul-escuro);
+  line-height: 1.3;
+  margin: 0;
+}
+.equipe-cargo {
+  font-size: 0.85rem;
+  color: #3f637b;
+  margin: 0;
+  line-height: 1.3;
+}
+.equipe-card--destaque .equipe-cargo {
+  color: var(--azul-escuro);
+  font-weight: 600;
+}
 
 /* ---------- Avaliações do Google ---------- */
 .avaliacoes{ padding: 72px 0; background: var(--azul-escuro); color: var(--white); }
