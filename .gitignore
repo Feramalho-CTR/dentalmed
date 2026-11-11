@@ -1,0 +1,10 @@
+# Netlify CLI (estado local de deploy)
+.netlify/
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+
+# Editores
+.vscode/
+.idea/
