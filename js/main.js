@@ -295,6 +295,47 @@
     });
   });
 
+  // Lightbox / Zoom em tela cheia para fotos da equipe
+  var lightbox = document.getElementById("equipeLightbox");
+  var lightboxImg = document.getElementById("equipeLightboxImg");
+  var lightboxNome = document.getElementById("equipeLightboxNome");
+  var lightboxCargo = document.getElementById("equipeLightboxCargo");
+  var lightboxFechar = document.getElementById("equipeLightboxFechar");
+
+  if (lightbox && lightboxImg && lightboxNome && lightboxCargo) {
+    document.querySelectorAll(".equipe-card").forEach(function (card) {
+      card.addEventListener("click", function () {
+        var img = card.querySelector(".equipe-foto-wrap img");
+        if (!img) return; // Se não houver foto adicionada ainda, não abre
+
+        var nomeEl = card.querySelector(".equipe-nome");
+        var cargoEl = card.querySelector(".equipe-cargo");
+
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt || (nomeEl ? nomeEl.textContent : "");
+        lightboxNome.textContent = nomeEl ? nomeEl.textContent : "";
+        lightboxCargo.textContent = cargoEl ? cargoEl.textContent : "";
+
+        if (typeof lightbox.showModal === "function") {
+          lightbox.showModal();
+        }
+      });
+    });
+
+    if (lightboxFechar) {
+      lightboxFechar.addEventListener("click", function () {
+        lightbox.close();
+      });
+    }
+
+    // Clique fora do conteúdo (área do backdrop) fecha o lightbox
+    lightbox.addEventListener("click", function (e) {
+      if (e.target === lightbox) {
+        lightbox.close();
+      }
+    });
+  }
+
   // Fade/slide sutil ao rolar, respeitando prefers-reduced-motion
   var prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
