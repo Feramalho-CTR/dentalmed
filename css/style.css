@@ -615,7 +615,32 @@ a{ color: var(--azul-escuro); }
 /* ---------- Convênios ---------- */
 .convenios{ padding: 64px 0; background: var(--azul-claro-banda); }
 .convenios-inner{ text-align: center; max-width: 920px; }
-.convenios-inner .btn-cta-ghost{ margin: 32px auto 0; }
+.convenios-inner .btn-cta-ghost{
+  margin: 32px auto 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--azul-escuro);
+  color: var(--white);
+  border-color: transparent;
+  padding: 16px 36px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-radius: 8px;
+  box-shadow: 0 4px 14px rgba(10, 51, 95, 0.25);
+  transition: background-color 160ms var(--ease-out), transform 160ms var(--ease-out), box-shadow 160ms var(--ease-out);
+}
+@media (hover: hover) and (pointer: fine) {
+  .convenios-inner .btn-cta-ghost:hover {
+    background: var(--azul-marca);
+    border-color: transparent;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(58, 176, 255, 0.3);
+  }
+}
+.convenios-inner .btn-cta-ghost:active {
+  transform: scale(0.98);
+}
 .convenios-label{
   text-transform: uppercase;
   letter-spacing: 0.06em;
