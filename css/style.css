@@ -359,6 +359,7 @@ a{ color: var(--azul-escuro); }
   padding-top: calc(var(--divisor-h) / 2 + 24px);
   background: var(--white);
 }
+/* Lista estática original — mantida para compatibilidade */
 .check-list{
   list-style: none;
   margin: 28px 0;
@@ -394,7 +395,129 @@ a{ color: var(--azul-escuro); }
   border-bottom: 2px solid var(--azul-acento);
   transform: rotate(-45deg);
 }
+
+/* Lista interativa com checkboxes */
+.check-list--interativa{
+  gap: 10px;
+}
+.check-list--interativa li{
+  padding: 0;
+}
+.check-list--interativa li::before,
+.check-list--interativa li::after{
+  display: none;
+}
+.check-item{
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px;
+  border-radius: var(--radius-btn-sec);
+  border: 2px solid var(--border);
+  background: var(--azul-claro);
+  cursor: pointer;
+  transition: border-color 160ms var(--ease-out), background-color 160ms var(--ease-out), transform 120ms var(--ease-out);
+  user-select: none;
+}
+@media (hover: hover) and (pointer: fine){
+  .check-item:hover{
+    border-color: var(--azul-acento);
+    background: var(--azul-claro-banda);
+  }
+}
+.check-item:active{ transform: scale(0.99); }
+.check-item-input{
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+.check-item-box{
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  border: 2px solid var(--azul-acento);
+  background: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 160ms var(--ease-out), border-color 160ms var(--ease-out);
+}
+.check-item-box::after{
+  content: "";
+  display: block;
+  width: 11px;
+  height: 6px;
+  border-left: 2.5px solid var(--white);
+  border-bottom: 2.5px solid var(--white);
+  transform: rotate(-45deg) translateY(-1px);
+  opacity: 0;
+  transition: opacity 120ms var(--ease-out);
+}
+.check-item-input:checked ~ .check-item-box{
+  background: var(--azul-acento);
+  border-color: var(--azul-acento);
+}
+.check-item-input:checked ~ .check-item-box::after{
+  opacity: 1;
+}
+.check-item:has(.check-item-input:checked){
+  border-color: var(--azul-acento);
+  background: var(--azul-claro-banda);
+}
+.check-item-texto{
+  font-weight: 600;
+  color: var(--azul-escuro);
+  font-size: 0.98rem;
+  line-height: 1.4;
+}
+
 .identifica-fecho{ font-weight: 600; color: var(--azul-escuro); margin-bottom: 24px; }
+.identifica .btn-cta-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 14px 28px;
+  background: var(--azul-escuro);
+  color: var(--white);
+  font-size: 1.05rem;
+  font-weight: 700;
+  border-radius: var(--radius-btn-sec);
+  border-bottom: none;
+  box-shadow: 0 4px 14px rgba(11, 79, 122, 0.16);
+  transition: background-color 160ms var(--ease-out), transform 160ms var(--ease-out), box-shadow 160ms var(--ease-out), opacity 160ms var(--ease-out);
+}
+/* Estado desabilitado — enquanto nenhum checkbox está marcado */
+.identifica .btn-cta-ghost[aria-disabled="true"] {
+  background: var(--border);
+  color: var(--text-muted);
+  box-shadow: none;
+  pointer-events: none;
+  opacity: 0.75;
+  cursor: default;
+}
+/* Estado ativado */
+.identifica .btn-cta-ghost[aria-disabled="false"] {
+  background: var(--azul-escuro);
+  color: var(--white);
+  pointer-events: auto;
+  opacity: 1;
+}
+@media (hover: hover) and (pointer: fine) {
+  .identifica .btn-cta-ghost[aria-disabled="false"]:hover {
+    background: var(--azul-marca);
+    border-color: transparent;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(58, 176, 255, 0.3);
+  }
+}
+.identifica .btn-cta-ghost:active {
+  transform: scale(0.98);
+}
 
 /* ---------- Procedimentos ---------- */
 .procedimentos{ padding: 72px 0; background: var(--white); }
@@ -528,14 +651,14 @@ a{ color: var(--azul-escuro); }
    duas-colunas — reintroduzir grid-template-columns ao trazer a lista de volta. */
 .clinica-grid--single{
   grid-template-columns: 1fr;
-  max-width: 560px;
+  max-width: 640px;
   text-align: center;
 }
 .clinica-grid--single h2{ margin-bottom: 28px; }
 .clinica-card{
   background: var(--azul-claro);
   border-radius: var(--radius-card);
-  padding: 28px;
+  padding: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -549,20 +672,23 @@ a{ color: var(--azul-escuro); }
   border: none;
   background: var(--white);
   border-radius: var(--radius-btn-sec);
-  padding: 18px 22px;
+  padding: 24px 32px;
   font: inherit;
-  font-size: 1.05rem;
-  font-weight: 600;
+  font-size: 1.3rem;
+  font-weight: 700;
   color: var(--azul-escuro);
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  transition: background-color 160ms var(--ease-out), transform 160ms var(--ease-out);
+  gap: 12px;
+  box-shadow: 0 4px 16px rgba(11, 79, 122, 0.08);
+  transition: background-color 160ms var(--ease-out), transform 160ms var(--ease-out), box-shadow 160ms var(--ease-out);
 }
 .clinica-equipe-btn::after{
   content: "+";
+  font-size: 1.5rem;
   font-weight: 700;
+  color: var(--azul-marca);
 }
 .clinica-equipe-btn:focus-visible{ background: var(--azul-claro-banda); }
 @media (hover: hover) and (pointer: fine){

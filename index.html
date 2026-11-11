@@ -60,7 +60,7 @@
     href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Newsreader:ital,wght@0,500;0,600;0,700;1,500&display=swap"
     rel="stylesheet">
 
-  <link rel="stylesheet" href="css/style.css?v=3">
+  <link rel="stylesheet" href="css/style.css?v=4">
 
   <script type="application/ld+json">
 {
@@ -241,16 +241,42 @@
     <section class="identifica" id="identifica">
       <div class="wrap">
         <h2>Você se identifica com alguma dessas situações?</h2>
-        <ul class="check-list">
-          <li>Sente dor ou sensibilidade ao mastigar ou tomar algo gelado</li>
-          <li>Tem um dente quebrado, com cárie, ou já perdeu algum</li>
-          <li>Faz tempo que não vai ao dentista</li>
-          <li>Quer clarear ou alinhar os dentes</li>
+        <ul class="check-list check-list--interativa" id="identificaLista">
+          <li>
+            <label class="check-item">
+              <input type="checkbox" class="check-item-input" value="dor">
+              <span class="check-item-box" aria-hidden="true"></span>
+              <span class="check-item-texto">Sente dor ou sensibilidade ao mastigar ou tomar algo gelado</span>
+            </label>
+          </li>
+          <li>
+            <label class="check-item">
+              <input type="checkbox" class="check-item-input" value="dente">
+              <span class="check-item-box" aria-hidden="true"></span>
+              <span class="check-item-texto">Tem um dente quebrado, com cárie, ou já perdeu algum</span>
+            </label>
+          </li>
+          <li>
+            <label class="check-item">
+              <input type="checkbox" class="check-item-input" value="tempo">
+              <span class="check-item-box" aria-hidden="true"></span>
+              <span class="check-item-texto">Faz tempo que não vai ao dentista</span>
+            </label>
+          </li>
+          <li>
+            <label class="check-item">
+              <input type="checkbox" class="check-item-input" value="estetica">
+              <span class="check-item-box" aria-hidden="true"></span>
+              <span class="check-item-texto">Quer clarear ou alinhar os dentes</span>
+            </label>
+          </li>
         </ul>
         <p class="identifica-fecho">Se marcou algum desses, vale uma avaliação.</p>
-        <a class="btn-cta-ghost" data-cta="identificacao"
+        <a class="btn-cta-ghost" data-cta="identificacao" id="btnIdentifica"
           href="https://wa.me/5547997565906?text=Ol%C3%A1!%20Me%20identifiquei%20com%20uma%20das%20situa%C3%A7%C3%B5es%20e%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o."
-          target="_blank" rel="noopener">Quero avaliar meu caso →</a>
+          target="_blank" rel="noopener"
+          aria-disabled="true"
+          tabindex="-1">Quero avaliar meu caso →</a>
       </div>
     </section>
 
@@ -445,7 +471,6 @@
            uma lista .diferenciais-list ao lado do card — por ora omitida para não renderizar
            itens vazios (ver PRODUCT.md > Capabilities and Constraints). -->
       <div class="wrap clinica-grid clinica-grid--single">
-        <h2>Como trabalhamos</h2>
         <div class="clinica-card">
           <button type="button" class="clinica-equipe-btn" data-modal-open="modalEquipe">
             <span>Nossa Equipe</span>
@@ -779,7 +804,7 @@
     </div>
   </div>
 
-  <script src="js/main.js?v=3"></script>
+  <script src="js/main.js?v=4"></script>
 </body>
 
 </html>

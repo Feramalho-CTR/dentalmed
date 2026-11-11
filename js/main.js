@@ -66,6 +66,33 @@
     });
   });
 
+  // Checklist interativa da seção "Você se identifica?"
+  // O botão só fica ativo após ao menos um item ser marcado.
+  var identificaLista = document.getElementById("identificaLista");
+  var btnIdentifica = document.getElementById("btnIdentifica");
+
+  if (identificaLista && btnIdentifica) {
+    function atualizarBtnIdentifica() {
+      var algumMarcado = identificaLista.querySelectorAll(".check-item-input:checked").length > 0;
+      btnIdentifica.setAttribute("aria-disabled", algumMarcado ? "false" : "true");
+      btnIdentifica.tabIndex = algumMarcado ? 0 : -1;
+    }
+
+    identificaLista.querySelectorAll(".check-item-input").forEach(function (input) {
+      input.addEventListener("change", atualizarBtnIdentifica);
+    });
+
+    // Garante estado inicial correto
+    atualizarBtnIdentifica();
+
+    // Bloqueia clique quando desabilitado
+    btnIdentifica.addEventListener("click", function (e) {
+      if (btnIdentifica.getAttribute("aria-disabled") === "true") {
+        e.preventDefault();
+      }
+    });
+  }
+
   // Banner de cookies (LGPD) — simples aceitar/recusar, sem rastreamento
   // ativo (não há Analytics configurado ainda). Guarda a escolha do
   // visitante para não perguntar de novo.
